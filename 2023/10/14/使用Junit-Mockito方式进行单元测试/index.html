@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="一、当前遇到的困难在接手业务的代码后，发现当且单测有着这样的一些问题：  单元测试启动繁琐，开发效率低；需要依赖于Spring服务的启动，耗时太久 单测覆盖率难以提升；当前Spring启动的方式进行单测，用例无法随心所欲的模拟，往往依赖于自己在测试环境造数据，模拟成本较大。 依赖于外部数据造成单测流水线的不稳定，当测试环境数据发生变化后，单测会发生失败 外部同学使用不友好；外部同学使用当前启动服务">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/1.jpg">
+<meta property="og:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/1.jpg">
 <meta property="og:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/2.jpg">
 <meta property="og:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/3.jpg">
 <meta property="article:published_time" content="2023-10-14T02:59:34.000Z">
-<meta property="article:modified_time" content="2023-10-15T14:28:51.742Z">
+<meta property="article:modified_time" content="2023-10-15T14:38:57.999Z">
 <meta property="article:author" content="nmerkbw">
 <meta property="article:tag" content="单元测试">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/1.jpg">
+<meta name="twitter:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/1.jpg">
   
   
   
@@ -325,7 +325,7 @@
 <h1 id="二、Why-is-Mockito"><a href="#二、Why-is-Mockito" class="headerlink" title="二、Why is Mockito"></a>二、Why is Mockito</h1><p>为什么要使用 Mock 对象? 使用它有什么好处呢?</p>
 <p>下面我们以一个简单的例子来展示一下 Mock 对象到底有什么用。</p>
 <p>假设我们正在编写一个银行的服务 BankService, 这个服务的依赖关系如下</p>
-<img src="使用Junit-Mockito方式进行单元测试/1.jpg" srcset="/img/loading.gif" lazyload alt="1" style="zoom:50%;" />
+<img src="/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/1.jpg" srcset="/img/loading.gif" lazyload class="" title="服务依赖关系">
 
 <p>当我们需要测试 BankService 服务时, 该真么办呢?</p>
 <p>一种方法是构建真实的 BankDao, DB, AccountService 和 AuthService 实例, 然后注入到 BankService 中。</p>
