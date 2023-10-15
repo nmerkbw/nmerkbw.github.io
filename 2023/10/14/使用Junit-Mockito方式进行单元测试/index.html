@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/2.jpg">
 <meta property="og:image" content="http://example.com/2023/10/14/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/%E4%BD%BF%E7%94%A8Junit-Mockito%E6%96%B9%E5%BC%8F%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/3.jpg">
 <meta property="article:published_time" content="2023-10-14T02:59:34.000Z">
-<meta property="article:modified_time" content="2023-10-15T14:22:40.245Z">
+<meta property="article:modified_time" content="2023-10-15T14:28:51.742Z">
 <meta property="article:author" content="nmerkbw">
 <meta property="article:tag" content="单元测试">
 <meta name="twitter:card" content="summary_large_image">
@@ -323,13 +323,13 @@
 </ul>
 <p>基于以上困难和痛点，我们决定放弃使用Spring的方式去运行单测，而是使用Junit+Mockito的方式进行单测提效。</p>
 <h1 id="二、Why-is-Mockito"><a href="#二、Why-is-Mockito" class="headerlink" title="二、Why is Mockito"></a>二、Why is Mockito</h1><p>为什么要使用 Mock 对象? 使用它有什么好处呢?</p>
-<p>下面我们以一个简单的例子来展示一下 Mock 对象到底有什么用.</p>
-<p>假设我们正在编写一个银行的服务 BankService, 这个服务的依赖关系如下:</p>
+<p>下面我们以一个简单的例子来展示一下 Mock 对象到底有什么用。</p>
+<p>假设我们正在编写一个银行的服务 BankService, 这个服务的依赖关系如下</p>
 <img src="使用Junit-Mockito方式进行单元测试/1.jpg" srcset="/img/loading.gif" lazyload alt="1" style="zoom:50%;" />
 
 <p>当我们需要测试 BankService 服务时, 该真么办呢?</p>
 <p>一种方法是构建真实的 BankDao, DB, AccountService 和 AuthService 实例, 然后注入到 BankService 中。</p>
-<p>这是一种既笨重又繁琐的方法, 完全不符合单元测试的精神。（我们的发票单测代码就是这么做的，需要去启动Spring服务然后进行测试） 那么还有一种更加优雅的方法吗? 自然是有的, 那就是我们今天的主角 <strong>Mock Object</strong>. 下面来看一下使用 Mock 对象后的框架图:</p>
+<p>这是一种既笨重又繁琐的方法, 完全不符合单元测试的精神。（我们的发票单测代码就是这么做的，需要去启动Spring服务然后进行测试） 那么还有一种更加优雅的方法吗? 自然是有的, 那就是我们今天的主角 <strong>Mock Object</strong>. 下面来看一下使用 Mock 对象后的框架图</p>
 <img src="使用Junit-Mockito方式进行单元测试/2.jpg" srcset="/img/loading.gif" lazyload alt="1" style="zoom: 50%;" />
 
 <p>我们看到, BankDao, AccountService 和 AuthService 都使用了虚拟的对象(Mock 对象) 来替换了, 因此我们就可以对 BankService 进行测试, 而不需要关注它的复杂的依赖了。</p>
